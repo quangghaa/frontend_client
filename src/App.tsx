@@ -1,22 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import { Button, Input } from 'antd'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import AragonClient from './layout/aragon_client'
+import ExplorePage from './pages/explore'
+import VotePage from './pages/vote'
+import FinancePage from './pages/finance'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <span className="text-3xl font-bold underline">
-        Hello world!
-      </span>
-      <div className="App">
-        <Input />
-        <input />
-        <Button type="primary">Button</Button>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AragonClient />}>
+            <Route path="/explore" element={<ExplorePage />} />
+            <Route path="/vote" element={<VotePage />} />
+            <Route path="/finance" element={<FinancePage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
